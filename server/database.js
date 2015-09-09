@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var dogs = new Schema({
+var dog = new Schema({
   name: String,
   age: Number,
   breed: String
 });
 
-mongoose.model('dog', dogs);
+mongoose.model('dogs', dog);
 mongoose.connect(null || 'mongodb://localhost/crud-assessment');
