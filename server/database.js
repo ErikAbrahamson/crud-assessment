@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var uriUtil = require('mongodb-uri');
 var Schema = mongoose.Schema;
-var URI = uriUtil.formatMongoose('mongodb://heroku_mgr200d3:ioc6l977u77vvau91bo7emghae@ds051848.mongolab.com:51848/heroku_mgr200d3');
+var URI = uriUtil.formatMongoose(process.env.mdb);
 
 var dog = new Schema({
   name: String,
