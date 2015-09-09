@@ -11,9 +11,7 @@ router.get('/', function(req, res, next) {
 // API Form Post
 router.post('/dogs', function(req, res, next) {
   new Dog(req.body).save(function(err, success) {
-    Dog.find(function(err, dogs) {
-      res.json(dogs);
-    });
+    res.render('index', { title: 'CRUD Assessment'});
   });
 });
 
@@ -28,6 +26,24 @@ router.get('/dogs', function(req, res, next) {
 router.get('/dogs/:id', function(req, res, next) {
   var query = {'_id': req.params.id};
   Dog.findOne(query, function(err, dog) {
+    res.json(dog);
+  });
+});
+
+// API Put/edit Single Dog
+router.put('/dogs/:id', function(req, res, next) {
+  var query = {'_id': req.params.id},
+    update = req.body, options = {new: true};
+    Dog.findOneAndUpdate(query, update, options, function(err, dog) {
+      res.json(dog);
+    }
+  );
+});
+
+// API Delete Single Dog
+router.delete('/dogs/:id', function(req, res) {
+  var query = {'_id': req.params.id};
+  Dog.findOneAndRemove(query, function(err, dog) {
     res.json(dog);
   });
 });
