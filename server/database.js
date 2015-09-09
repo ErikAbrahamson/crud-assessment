@@ -25,4 +25,4 @@ var options = {
 };
 
 mongoose.model('dogs', dog);
-mongoose.connect(URI, options);
+mongoose.connect(URI || 'mongodb://localhost/db-name', options);
