@@ -24,7 +24,7 @@ router.get('/dogs', function(req, res, next) {
 
 // API Get Single Dog
 router.get('/dogs/:id', function(req, res, next) {
-  var query = {'_id': req.params.id};
+  var query = {'_id': {'$oid': req.params.id}};
   Dog.findOne(query, function(err, dog) {
     res.json(dog);
   });
@@ -32,7 +32,7 @@ router.get('/dogs/:id', function(req, res, next) {
 
 // API Put/edit Single Dog
 router.put('/dogs/:id', function(req, res, next) {
-  var query = {'_id': req.params.id},
+  var query = {'_id': {'$oid': req.params.id}},
     update = req.body, options = {new: true};
     Dog.findOneAndUpdate(query, update, options, function(err, dog) {
       res.json(dog);
@@ -42,7 +42,7 @@ router.put('/dogs/:id', function(req, res, next) {
 
 // API Delete Single Dog
 router.delete('/dogs/:id', function(req, res) {
-  var query = {'_id': req.params.id};
+  var query = {'_id': {'$oid': req.params.id}};
   Dog.findOneAndRemove(query, function(err, dog) {
     res.json(dog);
   });
