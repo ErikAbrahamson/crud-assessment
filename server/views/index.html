@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block title %}{% endblock %}
+
+
+{% block content %}
+
+  <div class="container">
+
+    <h1>{{ title }}</h1>
+    <form>
+      <div class="form-group">
+        <label for="name">Dog name</label>
+        <input type="text" class="form-control" id="name" placeholder="name">
+      </div>
+      <div class="form-group">
+        <label for="breed">Dog age</label>
+        <input type="number" class="form-control" id="age" placeholder="age">
+      </div>
+      <div class="form-group">
+        <label for="breed">Dog breed</label>
+        <input type="text" class="form-control" id="breed" placeholder="breed">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
+  </div>
+
+{% endblock %}
