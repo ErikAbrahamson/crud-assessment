@@ -11,8 +11,9 @@ router.get('/', function(req, res, next) {
 // API Form Post
 router.post('/dogs', function(req, res, next) {
   new Dog(req.body).save(function(err, success) {
-    console.log(req.body);
-    res.json(success);
+    Dog.find(function(err, dogs) {
+      res.json(dogs);
+    });
   });
 });
 
@@ -23,5 +24,12 @@ router.get('/dogs', function(req, res, next) {
   });
 });
 
+// API Get Single Dog
+router.get('/dogs/:id', function(req, res, next) {
+  var query = {'_id': req.params.id};
+  Dog.findOne(query, function(err, dog) {
+    res.json(dog);
+  });
+});
 
 module.exports = router;
